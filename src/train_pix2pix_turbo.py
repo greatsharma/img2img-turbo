@@ -164,7 +164,8 @@ def main(args):
 
     # start the training loop
     global_step = 0
-    for epoch in range(0, args.num_training_epochs):
+    for i, epoch in enumerate(range(args.num_training_epochs)):
+        print(f"\n========================Epoch {i+1}=========================\n")
         for step, batch in enumerate(dl_train):
             l_acc = [net_pix2pix, net_disc]
             with accelerator.accumulate(*l_acc):
